@@ -1,0 +1,44 @@
+ғылыми пряник және мұрын сайт
+
+Профиль:
+- донаты
+- регистрация по нику
+- история запросов
+- настройки
+- связь с разработчиком
+- отзывы
+
+Функции:
+- вычисления
+- решения уравнений до 3 степени вкл
+- перевод из одной системы счисления в другую 
+- построение графиков (?)
+- последовательности (геометрическая и алгебраическая)
+
+Теория:
+- геома
+- алгебра (последовательности)
+
+Жобалау:
+/master  - главная
+/slave - пользователь
+/donuts - донаты
+/equations - решение уравнений
+/slave-solving - вычисление значний выражений
+/slave-count_sistems - перевод систем счисления
+/fckn_slave-graphs - рисование графиков
+
+Символы:
+https://pixelplus.ru/studio/stat/html-simvoly-tablitsa-spetssimvolov-v-formate-html/
+
+Шаблон:
+<span>&#8730;</span><span  style="border-top: 1px solid black">x</span>
+
+Дробь + степень:
+<table><tr><td>
+ <td> <div style="float:left">
+    <div style="border-bottom:1px solid;font-size:small;text-align:center;">x<sup>2</sup>верх</div>
+    <div style="font-size:small;text-align:center;">низ</div>
+  </div></td>
+</tr>
+</table>
