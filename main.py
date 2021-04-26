@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, make_response, session, redir
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from data import db_session
 import sqlite3
+import os
 from data.users import User
 from forms.LoginForm import LoginForm
 from forms.user import RegisterForm
@@ -114,4 +115,5 @@ def reqister():
 
 
 if __name__ == '__main__':
-    main()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
