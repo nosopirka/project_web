@@ -15,7 +15,7 @@ Contacts:
   - Discord:
     - Konstantin  Kolobo4ek#9409
     - Veronika  nosopirka#0172
-  VK:
+  - VK:
     - Konstantin  @kmrrazz
     - Veronika  @aurora_keke
 --------------------------------------------------------
