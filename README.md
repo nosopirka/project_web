@@ -1,6 +1,6 @@
 Адам және мұрын - the best project since last 1000 years!
 ---------------------------------------------------------
-It has bot, site and a database in it!
+It has a telegram bot, a website and a database in it!
 ---------------------------------------------------------
 Description:
 - Free telegram bot with useful and helpful functions, 
