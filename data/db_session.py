@@ -5,7 +5,7 @@ import sqlalchemy.ext.declarative as dec
 
 SqlAlchemyBase = dec.declarative_base()
 
-__factory = 1
+__factory = None
 
 
 def create_session() -> Session:
