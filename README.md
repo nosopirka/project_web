@@ -12,12 +12,12 @@ Description:
   - Support and feedback page
 ---------------------------------------------------------
 Contacts:
-  Discord:
-    - Konstantin - Kolobo4ek#9409
-    - Veronika - nosopirka#0172
+  - Discord:
+    - Konstantin  Kolobo4ek#9409
+    - Veronika  nosopirka#0172
   VK:
-    - Konstantin - @kmrrazz
-    - Veronika - @aurora_keke
+    - Konstantin  @kmrrazz
+    - Veronika  @aurora_keke
 --------------------------------------------------------
 All content belongs to the authors but can be used free of charge.
 Developed solely for presentation at the study
