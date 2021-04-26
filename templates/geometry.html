@@ -13,19 +13,23 @@
       <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
         <div class="card-body">
           <b>Универсальная:</b><br>
-Произведение полупериметра фигуры на радиус вписанной окружности<br><br>
+Произведение полупериметра фигуры на радиус вписанной окружности: S = pr<br><br>
             <b>Треугольник:</b><br>
-          Половина произведения высоты на сторону, к которой она проведена: ah / 2<br>
-          Произведение двух сторон на синус угла между ними: ab * sin(A)<br>
-          Формула Герона:
+          Половина произведения высоты на сторону, к которой она проведена: S = ah / 2<br>
+          Полупроизведение двух сторон на синус угла между ними: S = 1/2 * ab * sin(&#8736;A)<br>
+          Формула Герона: S = 
 <span>&#8730;</span><span  style="border-top: 1px solid black">p(p - a)(p - b)(p - c)</span>, где p = (a + b + c) / 3<br><br>
           <b>Прямоугольный треугольник:</b><br>
-          Половина произведения двух сторон: ab / 2<br><br>
+          Половина произведения катетов: S = ab / 2<br><br>
           <b>Равносторонний треугольник:</b><br>
-          Произведение квадрата стороны на отношение корня из 3 к 4: a&#178; *
+          Произведение квадрата стороны на отношение корня из 3 к 4: S = a&#178; *
 <span>&#8730;</span><span  style="border-top: 1px solid black">3</span> / 4<br><br>
           <b>Произвольный четырёхугольник:</b><br>
-          Произведение диагоналей на синус угла между ними: d1 * d2 * sin(G)
+          Полупроизведение диагоналей на синус угла между ними: S = 1/2 * d1 * d2 * sin(&#8736;G)<br><br>
+          <b>Ромб:</b><br>
+          Полупроизведение диагоналей: S = 1/2 * d1 * d2<br><br>
+          <b>Квадрат:</b><br>
+          Квадрат стороны: S = a&#178;
         </div>
       </div>
       
@@ -47,6 +51,24 @@
         </div>
       </div>
       
+      <div class="card-header" id="heading5">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+            Признаки подобия треугольников
+          </button>
+        </h5>
+      </div>
+      <div id="collapse5" class="collapse show" aria-labelledby="heading5" data-parent="#accordion">
+        <div class="card-body">
+          <b>Теорема 1:</b><br>
+          Если два угла одного треугольника соответственно равны двум углам другого, то такие треугольники подобны.<br><br>
+          <b>Теорема 2:</b><br>
+          Если две стороны одного треугольника пропорциональны двум сторонам другого треугольника и углы, образованные этими сторонами, равны, то такие треугольники подобны.<br><br>
+          <b>Теорема 3:</b><br>
+          Если три стороны одного треугольника пропорциональны трём сторонам другого, то такие треугольники подобны.<br><br>
+        </div>
+      </div>
+      
       <div class="card-header" id="heading2">
         <h5 class="mb-0">
           <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
@@ -57,14 +79,20 @@
       <div id="collapse2" class="collapse show" aria-labelledby="heading2" data-parent="#accordion">
         <div class="card-body">
             <b>В равностороннем треугольнике:</b><br>
-          Площадь - &#960 * a&#178; / 3<br>
-          Длина окружности - 2&#960 * (a&#178; * <span>&#8730;</span><span  style="border-top: 1px solid black">3</span>) / 3<br><br>
+          Площадь - &#960; * a&#178; / 3<br>
+          Длина окружности - 2&#960; * (a&#178; * <span>&#8730;</span><span  style="border-top: 1px solid black">3</span>) / 3<br><br>
           <b>В прямоугольном треугольнике:</b><br>
-          Площадь - &#960 * (a&#178; + b&#178;) / 4<br>
-          Длина окружности - &#960 * <span>&#8730;</span><span  style="border-top: 1px solid black">(a&#178; + b&#178;)</span> / 3<br><br>
+          Площадь - &#960; * (a&#178; + b&#178;) / 4<br>
+          Длина окружности - &#960; * <span>&#8730;</span><span  style="border-top: 1px solid black">(a&#178; + b&#178;)</span> / 3<br><br>
           <b>В равнобедренном треугольнике:</b><br>
-          Площадь - &#960 * <i>b<sub>4</sub></i> / (4b&#178; - a&#178;)<br>
-          Длина окружности - 2&#960b&#178; / <span>&#8730;</span><span  style="border-top: 1px solid black">4b&#178; - a&#178;</span><br>
+          Площадь - &#960; * <i>b<sub>4</sub></i> / (4b&#178; - a&#178;)<br>
+          Длина окружности - 2&#960;b&#178; / <span>&#8730;</span><span  style="border-top: 1px solid black">4b&#178; - a&#178;</span><br>
+          <b>В прямоугольнике:</b><br>
+          Площадь - &#960; * <i>a<sub>2</sub></i> / (4sin&#178;(&#8736;A/2))<br>
+          Длина окружности - &#960;a / sin(&#8736;A/2)<br>
+          <b>В правильном шестиугольнике:</b><br>
+          Площадь - &#960;<i>a<sub>2</sub></i><br>
+          Длина окружности - 2&#960;a</span><br>
         </div>
       </div>
 
@@ -77,21 +105,12 @@
       </div>
       <div id="collapse3" class="collapse show" aria-labelledby="heading3" data-parent="#accordion">
         <div class="card-body">
-            Площад
+            <b>Круговой сектор</b> – это часть круга, ограниченная дугой и двумя радиусами, соединяющими концы дуги с центром круга.<br>
+          Площадь кругового сектора высчитывается по формуле: S = &#8736;A / 360&#176; * &#960;R&#178;<br><br>
+           <b>Сегмент</b> – это часть круга, ограниченная дугой и её хордой, а также часть шара, отделённая секущей плоскостью.<br>
+          Площадь сегмента высчитывается по формуле: S = R&#178; / 2 * (&#960;&#8736;A / 180&#176; - sin(&#8736;A))<br>
         </div>
       </div>
-
-      <div class="card-header" id="heading5">
-        <h5 class="mb-0">
-          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
-            Признаки подобия треугольников
-          </button>
-        </h5>
-      </div>
-      <div id="collapse5" class="collapse show" aria-labelledby="heading5" data-parent="#accordion">
-        <div class="card-body">
-          3 штуки
-        </div>
-      </div>
+      
   </div>
 {% endblock %}
