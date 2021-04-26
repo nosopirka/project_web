@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for item in news%}
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#article{{ item.id }}" role="button" aria-expanded="false" aria-controls="#article{{ item.id }}">
+    {{item.title}}
+  </a>
+</p>
+<div class="collapse" id="#article{{ item.id }}">
+  <div class="card card-body">
+    {{item.content}}
+  </div>
+</div>
+<div class="border border-dark">>
+
+    <h2>{{item.title}}</h2>
+    <div>
+        {{item.content}}
+    </div>
+    <div>
+        {% if current_user.is_authenticated %}
+            <div>
+                <a href="/news/{{ item.id }}" class="btn btn-danger">
+                    Добавить в избранное
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

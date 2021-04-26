@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="heading1">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+            Формулы площадей двумерных фигур
+          </button>
+        </h5>
+      </div>
+      <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
+        <div class="card-body">
+          <b>Универсальная:</b><br>
+Произведение полупериметра фигуры на радиус вписанной окружности<br><br>
+            <b>Треугольник:</b><br>
+          Половина произведения высоты на сторону, к которой она проведена: ah / 2<br>
+          Произведение двух сторон на синус угла между ними: ab * sin(A)<br>
+          Формула Герона:
+<span>&#8730;</span><span  style="border-top: 1px solid black">p(p - a)(p - b)(p - c)</span>, где p = (a + b + c) / 3<br><br>
+          <b>Прямоугольный треугольник:</b><br>
+          Половина произведения двух сторон: ab / 2<br><br>
+          <b>Равносторонний треугольник:</b><br>
+          Произведение квадрата стороны на отношение корня из 3 к 4: a&#178; *
+<span>&#8730;</span><span  style="border-top: 1px solid black">3</span> / 4<br>
+          <b>Произвольный четырёхугольник:</b><br>
+        </div>
+      </div>
+
+      <div class="card-header" id="heading2">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+            1
+          </button>
+        </h5>
+      </div>
+      <div id="collapse2" class="collapse show" aria-labelledby="heading2" data-parent="#accordion">
+        <div class="card-body">
+            1
+        </div>
+      </div>
+
+      <div class="card-header" id="heading3">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+            1
+          </button>
+        </h5>
+      </div>
+      <div id="collapse3" class="collapse show" aria-labelledby="heading3" data-parent="#accordion">
+        <div class="card-body">
+            1
+        </div>
+      </div>
+
+      <div class="card-header" id="heading4">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+            1
+          </button>
+        </h5>
+      </div>
+      <div id="collapse4" class="collapse show" aria-labelledby="heading4" data-parent="#accordion">
+        <div class="card-body">
+            1
+        </div>
+      </div>
+
+      <div class="card-header" id="heading5">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+1
+          </button>
+        </h5>
+      </div>
+      <div id="collapse5" class="collapse show" aria-labelledby="heading5" data-parent="#accordion">
+        <div class="card-body">
+1
+        </div>
+      </div>
+  </div>
+{% endblock %}

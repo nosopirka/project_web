@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ title }}</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
+          </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Теория
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/algebra">Алгебра</a>
+                  <a class="dropdown-item" href="/geometry">Геометрия</a>
+                  <a class="dropdown-item" href="/informatics">Информатика</a>
+                </div>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bot">Бот<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/connection">Связь<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+          {% if current_user.is_authenticated %}
+                <a role="button" class="btn btn-dark" href="/user">{{ current_user.name }}</a>
+          {% else %}
+                <a role="button" class="btn btn-dark" href="/register">Зарегистрироваться</a>
+                <a role="button" class="btn btn-dark" href="/login">Войти</a>
+          {% endif %}
+      </div>
+    </nav>
+</header>
+<!-- Begin page content -->
+<main role="main" class="container">
+    {% block content %}
+    <div class="jumbotron">
+        {% if current_user.is_authenticated %}
+      <h1 class="display-4">Привет, {{ current_user.name }}!</h1>
+         <p class="lead">Рады видеть тебя на нашем сайте :)</p>
+      <hr class="my-4">
+      <p>Надеюсь, тебе не терпится продолжить изучение теории:</p>
+      <p class="lead">
+                <a role="button" class="btn btn-dark" href="/algebra">Алгебра</a>
+                  <a role="button" class="btn btn-dark" href="/geometry">Геометрия</a>
+                  <a role="button" class="btn btn-dark" href="/informatics">Информатика</a>
+          </p>
+        {% else %}
+        <h1 class="display-4">Привет пользователь!</h1>
+      <p class="lead">Здесь вы можете посмотреть интересующую вас теорию по алгебре, геометрии и информатике. Понравившееся или сложные темы вы можете сохранить в профиле, чтобы вернуться к ним позже.
+             Также можете воспользоваться нашим телеграмм ботом для простых вычислений, например, решения уравнений и перевода чисел в разные системы счисления. О всех функциях бота и инструкции по его использованию можете узнать перейдя на соответствующую вкладку.
+             Если у вас есть вопросы, идеи по улучшению проекта, вы нашли ошибку, хотите поддержать разработчиков или оставить отзыв, то вы всегда можете связаться с нами. Вся контактная информация находится во вкладке Связь.</p>
+      <hr class="my-4">
+      <p>Советуем войти или зарегестрироваться чтобы открыть больше функций:</p>
+      <p class="lead">
+                <a role="button" class="btn btn-dark" href="/register">Зарегистрироваться</a>
+                <a role="button" class="btn btn-dark" href="/login">Войти</a>
+          {% endif %}
+      </p>
+    </div>
+    {% endblock %}
+</main>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
