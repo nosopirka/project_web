@@ -8,7 +8,7 @@ from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 import settings
 import functions
 
-TOKEN = settings.API_KEY
+TOKEN = settings.BOT_API_KEY
 
 # PROXY = {
 #     'proxy_url': settings.PROXY_URL,
@@ -20,12 +20,15 @@ TOKEN = settings.API_KEY
 
 commands = [
     "/start - начать диалог с ботом",
-    "/help - подсказка по пользованию ботом, в которой содержатся все функции",
+    "/help - подсказка по пользованию ботом",
+    "/commands - функция рассказывающая о функциях бота и командах, по которым эти функции вызываются",
     "/count_sistem - функция для того, что переводить числа из одной системы счисления в другую",
     "/sequences - фунукция для того, чтобы расчитать сумму n первых членов арифметической или геометрической "
     "прогрессии",
     "/equation - функция для того, чтобы бот решил вам уравнение, которое может быть до 2ой степени",
     "/meme - функция после вызова которой бот скинет вам смешную картиночку",
+    "/exchange_rates - функция, после вызова которой бот отправляет вам актуальный курс рубля относительной других валют"
+    " по версии ЦБРФ",
     "/site - функция отправляет вам ссылку на наш вебсайт с дополнительной теорией по алгебре и геометрии"
 ]
 
@@ -60,37 +63,45 @@ def cnt_sis(update, context):
 
 
 def cnt_sis1(update, context):
-    if not update.message.text.isdigit():
-        update.message.reply_text("Введите, пожалйста, в правильном формате: любое целое положительное число")
+    if not functions.is_number(update.message.text):
+        update.message.reply_text("Введите, пожалйста, систему счисления в правильном формате: целое число от 2 до 10")
         return 1
     if int(update.message.text) != float(update.message.text):
-        update.message.reply_text("Введите, пожалйста, в правильном формате: любое целое положительное число")
+        update.message.reply_text("Введите, пожалйста, систему счисления в правильном формате: целое число от 2 до 10")
         return 1
-    if int(update.message.text) < 0:
-        update.message.reply_text("Введите, пожалйста, в правильном формате: любое целое положительное число")
+    if not (1 < int(update.message.text) < 11):
+        update.message.reply_text("Введите, пожалйста, систему счисления в правильном формате: целое число от 2 до 10")
         return 1
-    for_cnt_sis["num"] = int(update.message.text)
-    update.message.reply_text("Теперь введите в какой системе считсления оно находится(целое число от 2 до 10)")
+    for_cnt_sis["sis1"] = int(update.message.text)
+    update.message.reply_text("Теперь ведите целое положительное число, которое хотите перевести:")
     return 2
 
 
 def cnt_sis2(update, context):
-    if not update.message.text.isdigit():
-        update.message.reply_text("Введите, пожалйста, систему счисления в правильном формате: целое число от 2 до 10")
+    if not functions.is_number(update.message.text):
+        update.message.reply_text("Введите, пожалйста, в правильном формате: любое целое положительное число в данной вами системе счисления")
         return 2
     if int(update.message.text) != float(update.message.text):
-        update.message.reply_text("Введите, пожалйста, систему счисления в правильном формате: целое число от 2 до 10")
+        update.message.reply_text("Введите, пожалйста, в правильном формате: любое целое положительное число в данной вами системе счисления")
         return 2
-    if not (1 < int(update.message.text) < 11):
-        update.message.reply_text("Введите, пожалйста, систему счисления в правильном формате: целое число от 2 до 10")
+    if int(update.message.text) < 0:
+        update.message.reply_text("Введите, пожалйста, в правильном формате: любое целое положительное число в данной вами системе счисления")
         return 2
-    for_cnt_sis["sis1"] = int(update.message.text)
+    f = 0
+    for x in str(int(update.message.text)):
+        if int(x) >= for_cnt_sis["sis1"]:
+            f = 1
+            break
+    if f:
+        update.message.reply_text("Введите, пожалйста, в правильном формате: любое целое положительное число в данной вами системе счисления")
+        return 2
+    for_cnt_sis["num"] = int(update.message.text)
     update.message.reply_text("А теперь введите в какую систему счисления вы хотите его перевести")
     return 3
 
 
 def cnt_sis3(update, context):
-    if not update.message.text.isdigit():
+    if not functions.is_number(update.message.text):
         update.message.reply_text("Введите, пожалйста систему счисления в правильном формате: целое число от 2 до 10")
         return 3
     if int(update.message.text) != float(update.message.text):
@@ -108,9 +119,10 @@ def cnt_sis3(update, context):
 
 def cnt_sis4(update, context):
     if ("да" in update.message.text.lower() or "yes" in update.message.text.lower() or
-        "of course" in update.message.text.lower() or "конечно" in update.message.text.lower()) \
+        "of course" in update.message.text.lower() or "конечно" in update.message.text.lower() or
+        "угу" in update.message.text.lower() or "ага" in update.message.text.lower()) \
             and ("не" not in update.message.text.lower() or "no" not in update.message.text.lower()):
-        update.message.reply_text("Введите целое положительное число, которое хотите перевести:")
+        update.message.reply_text("Введите в какой системе считсления находится ваше первое число (целое число от 2 до 10)")
         return 1
     else:
         update.message.reply_text("Ну ладно, как пожелаете...")
@@ -118,13 +130,13 @@ def cnt_sis4(update, context):
 
 
 def seq(update, context):
-    update.message.reply_text("Могу посчитать сумму первых n членов геометрической прогрессии по её первому члену и"
-                              " знаменателю прогрессии! Вам нужна моя помощь?")
+    update.message.reply_text("Могу посчитать сумму первых n членов геометрической либо арифметической прогрессии!\n"
+                              "Вам нужна моя помощь?")
     return 4
 
 
 def seq1(update, context):
-    if not update.message.text.isdigit():
+    if not functions.is_number(update.message.text):
         update.message.reply_text("Пожалуйста, введите первый член в правильном формате: число")
         return 1
     for_seq["a1/b1"] = float(update.message.text)
@@ -136,7 +148,7 @@ def seq1(update, context):
 
 
 def seq2(update, context):
-    if not update.message.text.isdigit():
+    if not functions.is_number(update.message.text):
         if for_seq["f"]:
             update.message.reply_text("Пожалуйста, введите разность вашей арифметической прогрессии "
                                       "в правильном формате: число")
@@ -155,7 +167,7 @@ def seq2(update, context):
 
 
 def seq3(update, context):
-    if not update.message.text.isdigit():
+    if not functions.is_number(update.message.text):
         update.message.reply_text("Пожалуйста, введите количество членов в правильном формате: "
                                   "целое неотрицательное ЧИСЛО")
     if int(update.message.text) != float(update.message.text):
@@ -176,7 +188,8 @@ def seq3(update, context):
 
 def seq4(update, context):
     if ("да" in update.message.text.lower() or "yes" in update.message.text.lower() or
-        "of course" in update.message.text.lower() or "конечно" in update.message.text.lower()) \
+        "of course" in update.message.text.lower() or "конечно" in update.message.text.lower() or
+        "угу" in update.message.text.lower() or "ага" in update.message.text.lower()) \
             and ("не" not in update.message.text.lower() or "no" not in update.message.text.lower()):
         update.message.reply_text("А теперь выберите для какой прогрессии вы хотите посчитать сумму первых n членов",
                                   reply_markup=markup_sis)
@@ -204,13 +217,14 @@ def seq5(update, context):
 
 
 def eq(update, context):
-    update.message.reply_text("О, вы хочешь чтобы я решил для тебя уравнение? Не так ли?")
+    update.message.reply_text("О, вы хотите, чтобы я решил для Вас уравнение? Не так ли?")
     return 1
 
 
 def eq1(update, context):
     if ("да" in update.message.text.lower() or "yes" in update.message.text.lower() or
-        "of course" in update.message.text.lower() or "конечно" in update.message.text.lower()) \
+        "of course" in update.message.text.lower() or "конечно" in update.message.text.lower() or
+        "угу" in update.message.text.lower() or "ага" in update.message.text.lower()) \
             and ("не" not in update.message.text.lower() or "no" not in update.message.text.lower()):
         update.message.reply_text("Ну тогда введите уравнение, которое вы хотите, чтобы я решил. Но учтите,"
                                   " я могу понять уравние, только по шаблону, который выглядит так:\n"
@@ -219,7 +233,7 @@ def eq1(update, context):
                                   "c - свободный член\n"
                                   "Уравнения степени выше 2ой я ещё не умею корректно решать. Поэтому если вы "
                                   "будете вводить уравнение не так, как я попросил, то я либо скажу вам об этом, "
-                                  "либо решу его неправильно, поэтому заранее, извиняюсь.")
+                                  "либо решу его неправильно, поэтому заранее, предупреждаю.")
         return 2
     else:
         update.message.reply_text("Ну ладно, как пожелаете...")
@@ -260,7 +274,7 @@ def cmd(update, context):
 
 
 def stop(update, context):
-    update.message.reply_text("ОК")
+    update.message.reply_text("Окей...")
     return ConversationHandler.END
 
 
@@ -268,11 +282,22 @@ def close_but(update, context):
     update.message.reply_text("Закрываю", reply_markup = ReplyKeyboardRemove())
 
 
+def urw(update, context):
+    update.message.reply_text("Всегда пожалуйста!")
+
+
+def exrt(update, context):
+    ot = functions.req()
+    update.message.reply_text("На данный момент у меня есть такие данные по поводу курса рубля относительно других "
+                              "валют:")
+    update.message.reply_text(ot)
+
+
 def send_website(update, context):
     update.message.reply_text("А вот наш сайт, на котором вы можете найти теорию по алгебре и геометрии, котора вам "
                               "обязательно поможет. Так же вы можете ознакомиться с его функционалом и получить "
                               "удовольствие от пользования им. \n"
-                              "НАДО БУДЕТ СЮДЫ ССЫЛКУ ВСТАВИТЬ")
+                              "https://helpfultechsite.herokuapp.com/connection")
 
 
 def start(update, context):
@@ -353,8 +378,13 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("meme", send_meme))
     dp.add_handler(CommandHandler("site", send_website))
+    dp.add_handler(CommandHandler("exchange_rates", exrt))
     dp.add_handler(MessageHandler(Filters.regex("^закрыть$"), close_but))
     dp.add_handler(MessageHandler(Filters.regex("^мем$"), send_meme))
+    dp.add_handler(MessageHandler(Filters.regex("^спасибо$"), urw))
+    dp.add_handler(MessageHandler(Filters.regex("^Закрыть$"), close_but))
+    dp.add_handler(MessageHandler(Filters.regex("^Мем$"), send_meme))
+    dp.add_handler(MessageHandler(Filters.regex("^Спасибо$"), urw))
 
     updater.start_polling()
 
