@@ -3,9 +3,9 @@
 It has bot, site and a database in it!
 ---------------------------------------------------------
 Description:
--Free telegram bot with useful and helpful functions, 
+- Free telegram bot with useful and helpful functions, 
   which everybody would like.
--Understandable site on russian language with 4 gaps:
+- Understandable site on russian language with 4 gaps:
   - Main page
   - Theory page
   - Bot page
