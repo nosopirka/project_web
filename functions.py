@@ -34,6 +34,8 @@ def sequences(a):
             s = b1
         elif n == 0:
             s = 0
+        elif q == 1:
+            s = n * b1
         else:
             s = b1 * ((q ** n) - 1) / (q - 1)
     return s
